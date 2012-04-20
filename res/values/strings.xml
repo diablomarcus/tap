@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, HelloAndroidActivity!</string>
-    <string name="app_name">HelloAndroid</string>
+    <string name="hello">Hello World, I am a test string but may not be sentient. You can tell this from how long I am and how I wrap text!</string>
+    <string name="app_name">Hello</string>
 
 </resources>
