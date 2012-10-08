@@ -30,7 +30,7 @@ public class HelloWorldActivity extends Activity {
 		}
 	};
 	
-	public SQLiteOpenHelper sqLiteOpenHelper = new SQLiteOpenHelper(null, null, null, 0) {
+	public SQLiteOpenHelper sqLiteOpenHelper = new SQLiteOpenHelper(null, null, null, 1) {
 		
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
