@@ -20,12 +20,24 @@
         style="@style/input_text"
         android:hint="@string/input_hint" />
 
-    <Button
-        android:id="@+id/save"
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="2"
-        android:text="@string/save" 
-        android:onClick="saveText"/>
-
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:layout_width="match_parent"
+   		android:layout_height="0px"
+   		android:layout_weight="2"
+    	android:orientation="horizontal" >
+	    <Button
+	        android:id="@+id/save"
+	        android:layout_height="fill_parent"
+	        android:layout_width="0px"
+	        android:layout_weight="1"
+	        android:text="@string/save" 
+	        android:onClick="saveText"/>
+	    
+	    <Button
+	        android:id="@+id/display"
+	        android:layout_height="fill_parent"
+	        android:layout_width="0px"
+	        android:layout_weight="1"
+	        android:text="@string/display"/>
+	</LinearLayout>
 </LinearLayout>

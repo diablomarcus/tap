@@ -1,9 +1,8 @@
 package net.katerberg.hello;
 
 import android.app.Activity;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -11,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class HelloWorldActivity extends Activity {
+	
+	private DbHandler inputDb;
 
 
     private OnClickListener saveClickListener = new OnClickListener() {
@@ -25,22 +26,10 @@ public class HelloWorldActivity extends Activity {
     			outputString = "You typed: "+input;
     		} 
     		outputField.setText(outputString);
+    		Log.d("Writing: ", "Writing "+input+" to DB");
+    		inputDb.addInput(new Input(input));
     		inputField.setText("");
     		
-		}
-	};
-	
-	public SQLiteOpenHelper sqLiteOpenHelper = new SQLiteOpenHelper(null, null, null, 1) {
-		
-		@Override
-		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public void onCreate(SQLiteDatabase db) {
-			db.beginTransaction();
 		}
 	};
 	
@@ -49,7 +38,10 @@ public class HelloWorldActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
- 
+
+        inputDb = new DbHandler(this);
+        
+        
         Button saveButton=(Button)this.findViewById(R.id.save);
         saveButton.setOnClickListener(saveClickListener);
         

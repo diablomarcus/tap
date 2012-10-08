@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">String Storer</string>
 	<string name="save">Save</string>
+	<string name="display">Display</string>
     
     <string name="input_hint">Type things here</string>
     
