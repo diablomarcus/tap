@@ -1,6 +1,8 @@
 package net.katerberg.hello;
 
 import android.app.Activity;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,6 +27,20 @@ public class HelloWorldActivity extends Activity {
     		outputField.setText(outputString);
     		inputField.setText("");
     		
+		}
+	};
+	
+	public SQLiteOpenHelper sqLiteOpenHelper = new SQLiteOpenHelper(null, null, null, 0) {
+		
+		@Override
+		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void onCreate(SQLiteDatabase db) {
+			db.beginTransaction();
 		}
 	};
 	
