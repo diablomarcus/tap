@@ -2,9 +2,6 @@ package net.katerberg.hello;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,26 +10,6 @@ public class HelloWorldActivity extends Activity {
 	
 	private DbHandler inputDb;
 
-
-    private OnClickListener saveClickListener = new OnClickListener() {
-    	public void onClick(View v) {
-    		TextView outputField = (TextView)findViewById(R.id.output);
-    		EditText inputField = (EditText)findViewById(R.id.input);
-    		
-    		String input = inputField.getEditableText().toString();
-    		String outputString="";
-    		
-    		if (!input.equals("")) {
-    			outputString = "You typed: "+input;
-    		} 
-    		outputField.setText(outputString);
-    		Log.d("Writing: ", "Writing "+input+" to DB");
-    		inputDb.addInput(new Input(input));
-    		inputField.setText("");
-    		
-		}
-	};
-	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,10 +18,13 @@ public class HelloWorldActivity extends Activity {
 
         inputDb = new DbHandler(this);
         
-        
         Button saveButton=(Button)this.findViewById(R.id.save);
-        saveButton.setOnClickListener(saveClickListener);
+        Button displayButton=(Button)this.findViewById(R.id.display);
+        Button clearButton=(Button)this.findViewById(R.id.clear);
+        TextView outputField = (TextView)findViewById(R.id.output);
         
-    }
-    
+        saveButton.setOnClickListener(ClickListeners.getSaveClickListener((EditText)findViewById(R.id.input), inputDb));
+        displayButton.setOnClickListener(ClickListeners.getDisplayClickListener(outputField, inputDb));
+        clearButton.setOnClickListener(ClickListeners.getClearClickListener(outputField, inputDb));
+    }	
 }
