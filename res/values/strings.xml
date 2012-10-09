@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">String Storer</string>
+    <string name="app_name">Storer</string>
 	<string name="save">Save</string>
 	<string name="display">Display</string>
 	<string name="clear">Clear</string>

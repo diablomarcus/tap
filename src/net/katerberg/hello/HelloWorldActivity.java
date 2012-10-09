@@ -17,7 +17,7 @@ public class HelloWorldActivity extends Activity {
         setContentView(R.layout.main);
 
         inputDb = new DbHandler(this);
-        
+
         Button saveButton=(Button)this.findViewById(R.id.save);
         Button displayButton=(Button)this.findViewById(R.id.display);
         Button clearButton=(Button)this.findViewById(R.id.clear);

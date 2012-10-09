@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 public class ClickListeners {
 
-	
 	public static OnClickListener getDisplayClickListener(final TextView outputField, final DbHandler inputDb){
 		return new OnClickListener() {
 	    	public void onClick(View v) {
