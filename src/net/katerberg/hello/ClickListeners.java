@@ -67,6 +67,7 @@ public class ClickListeners {
 	public static OnClickListener getSaveClickListener(final EditText inputField, final DbHandler inputDb){
 		return getSaveClickListener(inputField, null, inputDb);
 	}	
+	
 	public static OnClickListener getSaveClickListener(final EditText inputField, final TextView outputField, final DbHandler inputDb){
 		return new OnClickListener() {
 	    	public void onClick(View v) {
