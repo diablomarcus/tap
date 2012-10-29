@@ -3,14 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TabHost></TabHost>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:padding="@dimen/padding_medium"
-        android:text=""
-        tools:context=".LauncherActivity" />
+	<TabHost android:layout_width="fill_parent"
+	    android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@android:id/tabhost">
+	    <LinearLayout android:id="@+id/Tabs"
+	        android:orientation="vertical" android:layout_height="fill_parent"
+	        android:layout_width="fill_parent">
+	        <TabWidget android:id="@android:id/tabs"
+	            android:layout_height="wrap_content" android:layout_width="fill_parent"></TabWidget>
+	        <FrameLayout android:id="@android:id/tabcontent"
+	            android:layout_height="fill_parent" android:layout_width="fill_parent"></FrameLayout>
+	    </LinearLayout>
+	</TabHost>
 
 </RelativeLayout>

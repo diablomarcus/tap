@@ -17,18 +17,36 @@
         android:label="@string/app_name" >
         <uses-library android:name="android.test.runner" />
         <activity
-            android:name=".HelloWorldActivity"
-            android:label="@string/app_name" >
+            android:name=".tabs.TabBar"
+            android:label="@string/tab_holder" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
+        <activity
+            android:name=".tabs.DiceTab"
+            android:label="@string/tab_1" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+		<activity
+            android:name=".tabs.SettingsTab"
+            android:label="@string/tab_2" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+     </application>
     
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-    android:targetPackage="net.katerberg.hello"
+    android:targetPackage="net.katerberg.tap"
     android:label="Tests for my app" />
 	
 </manifest>
