@@ -1,0 +1,11 @@
+Features:
+-Dice rolling
+-Monster Manual
+-Map Storage
+-Settings
++Dice
+-Plugins 
++internal DB plugin
++import plugin
+   -monster
+   -map
