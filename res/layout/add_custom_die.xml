@@ -4,13 +4,20 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/diceDisplayView"
+    <EditText
+        android:id="@+id/customDieInput"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:gravity="center_horizontal"
-        android:text=""
-        android:textSize="50sp" />
+        android:hint="@string/custom_die_hint"
+        android:inputType="textCapCharacters" >
+    </EditText>
+
+    <Button android:id="@+id/acceptCustomDie" 
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+    </Button>
 
 </LinearLayout>

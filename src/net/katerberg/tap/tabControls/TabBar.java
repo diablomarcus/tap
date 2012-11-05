@@ -1,4 +1,4 @@
-package net.katerberg.tap.tabs;
+package net.katerberg.tap.tabControls;
 
 import net.katerberg.tap.R;
 import android.app.TabActivity;

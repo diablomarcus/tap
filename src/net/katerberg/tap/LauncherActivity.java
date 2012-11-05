@@ -1,6 +1,6 @@
 package net.katerberg.tap;
 
-import net.katerberg.tap.tabs.AppTabs;
+import net.katerberg.tap.tabControls.AppTabs;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TabHost;

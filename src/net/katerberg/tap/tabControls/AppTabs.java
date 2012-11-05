@@ -1,5 +1,8 @@
-package net.katerberg.tap.tabs;
+package net.katerberg.tap.tabControls;
 
+import net.katerberg.tap.tabs.DiceTab;
+import net.katerberg.tap.tabs.SettingsTab;
+import net.katerberg.tap.tabs.UserDefinedDiceTab;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.TabHost;
