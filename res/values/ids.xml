@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <item name="diceDisplayView" type="id"/>
     <item name="d4" type="id" />
     <item name="d6" type="id" />
@@ -9,4 +9,5 @@
     <item name="d20" type="id" />
     <item name="d100" type="id" />
     <item name="repeat" type="id" />
+    <item name="customDiceRollsLayout" type="id" />
 </resources>
