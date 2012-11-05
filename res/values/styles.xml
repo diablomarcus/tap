@@ -1,5 +1,21 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="AppTheme" parent="android:Theme.Light" />
-
+    <style parent="AppTheme" name="buttonHolder">
+        <item name="android:buttonStyle">@style/DiceButton</item>
+    </style>
+    
+    <style name="DiceButton" parent="android:style/Widget.Button">
+	  	<item name="android:layout_height">fill_parent</item>
+	  	<item name="android:layout_width">0dp</item>
+	  	<item name="android:layout_weight">1</item>
+ 	</style>
+	<style name="DiceLayout">
+	    <item name="android:orientation">horizontal</item>
+	    <item name="android:layout_height">0dp</item>
+	    <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_weight">1</item>
+	    <item name="android:divider">@drawable/divider</item>
+	    <item name="android:dividerHeight">1px</item>
+	</style>
 </resources>

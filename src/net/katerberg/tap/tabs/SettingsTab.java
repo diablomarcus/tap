@@ -10,7 +10,7 @@ public class SettingsTab extends Activity {
         super.onCreate(savedInstanceState);
  
         TextView textView = new TextView(this);
-        textView.setText("Here are some settings");
+        textView.setText("Here are some settings. If you can't see them, then you're not special enough.");
         setContentView(textView);
     }
 }

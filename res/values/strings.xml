@@ -6,5 +6,14 @@
     <string name="tab_holder">Tab Holder</string>
     <string name="tab_1">Dice</string>
     <string name="tab_2">Settings</string>
+    <string name="d12">D12</string>
+    <string name="d4">D4</string>
+    <string name="d6">D6</string>
+    <string name="d8">D8</string>
+    <string name="d10">D10</string>
+    <string name="d20">D20</string>
+    <string name="d100">d100</string>
+    <string name="dPercent">D%</string>
+    <string name="repeat">Repeat</string>
     
 </resources>

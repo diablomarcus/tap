@@ -16,6 +16,4 @@ public class LauncherActivity extends Activity {
         tabHost = (TabHost)findViewById(android.R.id.tabhost);
         AppTabs.setMyTabs(tabHost, this);
     }
-
-    
 }
