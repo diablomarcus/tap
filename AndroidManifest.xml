@@ -33,6 +33,8 @@
         </activity>
         <activity android:name=".tabs.SettingsTab" >
         </activity>
+        <activity android:name=".AddNewDie" >
+        </activity>
     </application>
 
 </manifest>

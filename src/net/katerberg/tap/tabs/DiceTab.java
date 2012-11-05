@@ -15,7 +15,7 @@ public class DiceTab extends Activity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dicetab);
+        setContentView(R.layout.dice_tab);
         createListeners();
     }
 
