@@ -16,34 +16,45 @@ public class AddNewDie extends Activity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_custom_die);
-		
+
 		((Button)this.findViewById(R.id.acceptCustomDie)).setOnClickListener(createAcceptCustomDieListener());
 	}
 
 	private OnClickListener createAcceptCustomDieListener() {
 
 		OnClickListener acceptCustomDie = new OnClickListener() {
-			
+
 			public void onClick(View v) {
 				EditText inputField = (EditText)v.findViewById(R.id.customDieInput);
 				String userInput = inputField.getText().toString();
+				CustomDie userDie = null; 
 				if(isInputValid(userInput)){
-					CustomDie userDie = userInputToCustomDie(userInput);
+					userDie = userInputToCustomDie(userInput);
 				}
+
 				
 				
 			}
-			
-			
+
+
 			private CustomDie userInputToCustomDie(String userInput) {
 				CustomDie die = new CustomDie();
+				die.setModifier(0);
 				String[] dSeparator = userInput.split("d");
 				Integer numberOfDice=Integer.parseInt(dSeparator[0]);
-				
+
 				String[] mathSeparator = dSeparator[0].split("[+-]");
 				Integer typeOfDice = Integer.parseInt(mathSeparator[0]);
+				if (mathSeparator.length > 1){
+					die.setModifier(Integer.parseInt(mathSeparator[2]));
+				}
+				
+				if (dSeparator[0].contains("-"))
+				{
+					die.setModifier(die.getModifier()*-1);
+				}
+				
 				die.setMaxValue(typeOfDice);
-//TODO: Finish this				
 				die.setNumberOfDice(numberOfDice);
 				return die;
 			}

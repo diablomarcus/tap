@@ -1,11 +1,32 @@
 package net.katerberg.tap;
 
 public class CustomDie {
+	private Integer customDieId;
 	private Integer numberOfDice;
 	private Integer maxValue;
 	private Integer modifier;
 	
+
 	
+	public CustomDie() {
+	}
+	
+	public CustomDie(Integer customDieId, Integer numberOfDice, Integer maxValue, Integer modifier) {
+		this.customDieId = customDieId;
+		this.numberOfDice = numberOfDice;
+		this.maxValue = maxValue;
+		this.modifier = modifier;
+	}
+
+	
+	
+	public Integer getCustomDieId() {
+		return customDieId;
+	}
+
+	public void setCustomDieId(Integer customDieId) {
+		this.customDieId = customDieId;
+	}
 
 	public Integer getNumberOfDice() {
 		return numberOfDice;
