@@ -10,7 +10,7 @@
         android:layout_height="0dp"
         android:layout_weight="2"
         android:hint="@string/custom_die_hint"
-        android:inputType="textCapCharacters" >
+        android:inputType="textNoSuggestions" >
     </EditText>
 
     <Button android:id="@+id/acceptCustomDie" 

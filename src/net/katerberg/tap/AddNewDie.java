@@ -26,10 +26,15 @@ public class AddNewDie extends Activity{
 
 			public void onClick(View v) {
 				
-				String userInput = edit.getText().toString();
+				String userInput = edit.getText().toString().toLowerCase();
 				CustomDie userDie = null; 
 				if(isInputValid(userInput)){
 					userDie = userInputToCustomDie(userInput);
+				}
+				if(userDie != null){
+					edit.setText("Max val is " + userDie.getMaxValue() 
+							+ " modifier is " + userDie.getModifier()
+							+ " number of dice are/is " + userDie.getNumberOfDice());
 				}
 			}
 
@@ -40,10 +45,10 @@ public class AddNewDie extends Activity{
 				String[] dSeparator = userInput.split("d");
 				Integer numberOfDice=Integer.parseInt(dSeparator[0]);
 
-				String[] mathSeparator = dSeparator[0].split("[+-]");
+				String[] mathSeparator = dSeparator[1].split("[+-]");
 				Integer typeOfDice = Integer.parseInt(mathSeparator[0]);
-				if (mathSeparator.length > 1){
-					die.setModifier(Integer.parseInt(mathSeparator[2]));
+				if (mathSeparator.length> 1){
+					die.setModifier(Integer.parseInt(mathSeparator[1]));
 				}
 
 				if (dSeparator[0].contains("-"))
@@ -57,10 +62,12 @@ public class AddNewDie extends Activity{
 			}
 
 			private Boolean isInputValid(String input) {
-				Pattern validPattern = Pattern.compile("^[0-9]+d[0-9]+[+\\-]?[0-9]+?$");
-				Matcher matcher = validPattern.matcher(input);
+				
+				Pattern validPattern = Pattern.compile("^[0-9]+d[0-9]+([+\\-][0-9]+)?$");
+				
+				Matcher matcher = validPattern.matcher(input.trim());
 				if(!matcher.matches()){
-					Toast toast = Toast.makeText(getBaseContext(), "invalid input", Toast.LENGTH_SHORT);
+					Toast toast = Toast.makeText(getBaseContext(), "Invalid Input", Toast.LENGTH_SHORT);
 					toast.show();
 				}
 				return matcher.matches();
