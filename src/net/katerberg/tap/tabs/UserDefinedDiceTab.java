@@ -20,8 +20,9 @@ package net.katerberg.tap.tabs;
  ******************************************************************************/
 import java.util.List;
 
+import beans.CustomDie;
+
 import net.katerberg.tap.AddNewDie;
-import net.katerberg.tap.CustomDie;
 import net.katerberg.tap.R;
 import android.app.Activity;
 import android.content.Intent;

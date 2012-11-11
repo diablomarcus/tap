@@ -21,6 +21,8 @@ package net.katerberg.tap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import beans.CustomDie;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;

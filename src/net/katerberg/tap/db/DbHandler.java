@@ -22,7 +22,8 @@ package net.katerberg.tap.db;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.katerberg.tap.CustomDie;
+import beans.CustomDie;
+
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -55,8 +56,8 @@ public class DbHandler extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		String CREATE_CUSTOM_DICE_TABLE = "CREATE TABLE " + TABLE_CUSTOM_DICE + "("
 				+ KEY_ID + " INTEGER PRIMARY KEY," 
-				+ NUMBER_OF_DICE + " INTEGER" 
-				+ MAX_VALUE + " INTEGER" 
+				+ NUMBER_OF_DICE + " INTEGER," 
+				+ MAX_VALUE + " INTEGER," 
 				+ MODIFIER + " INTEGER" 
 				+ ")";
 		db.execSQL(CREATE_CUSTOM_DICE_TABLE);		
