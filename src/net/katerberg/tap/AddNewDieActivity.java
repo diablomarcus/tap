@@ -78,7 +78,7 @@ public class AddNewDieActivity extends Activity{
 					die.setModifier(Integer.parseInt(mathSeparator[1]));
 				}
 
-				if (dSeparator[0].contains("-"))
+				if (!dSeparator[1].contains("+"))
 				{
 					die.setModifier(die.getModifier()*-1);
 				}
