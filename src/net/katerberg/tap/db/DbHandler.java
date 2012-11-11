@@ -1,8 +1,9 @@
+package net.katerberg.tap.db;
 /*******************************************************************************
  * Copyright (c) 2012 "Mark Katerberg"
  * 
  * 
- * This file is part of Katerproject.
+ * This file is part of TAP.
  * 
  * Katerproject is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -17,7 +18,6 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package net.katerberg.tap.db;
 
 import java.util.ArrayList;
 import java.util.List;
