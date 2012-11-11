@@ -22,6 +22,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.katerberg.tap.beans.Die;
+import net.katerberg.tap.db.DbHandler;
 
 
 import android.app.Activity;
@@ -32,11 +33,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AddNewDie extends Activity{
+public class AddNewDieActivity extends Activity{
+	DbHandler dbHandler;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_custom_die);
+		
+		dbHandler = new DbHandler(this);
 		EditText inputField = (EditText)findViewById(R.id.customDieInput);
 		((Button)this.findViewById(R.id.acceptCustomDie)).setOnClickListener(createAcceptCustomDieListener(inputField));
 	}
@@ -53,9 +58,10 @@ public class AddNewDie extends Activity{
 					userDie = userInputToCustomDie(userInput);
 				}
 				if(userDie != null){
-					edit.setText("Max val is " + userDie.getMaxValue() 
-							+ " modifier is " + userDie.getModifier()
-							+ " number of dice are/is " + userDie.getNumberOfDice());
+					dbHandler.addCustomDie(userDie);
+					Toast toast = Toast.makeText(getBaseContext(), "Roll Added", Toast.LENGTH_SHORT);
+					toast.show();
+					edit.setText("");
 				}
 			}
 

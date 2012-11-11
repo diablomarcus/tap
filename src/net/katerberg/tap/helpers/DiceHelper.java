@@ -25,14 +25,14 @@ import net.katerberg.tap.beans.Die;
 
 public class DiceHelper {
 	static Random random = new Random();
-	
+
 	//Assumes all values except modifier are non-null
 	public static Integer rollDie(Die die){
 		if (die==null){return null;}
-		
+
 		Integer total=0;//Initialized
 		Integer modifier = die.getModifier();
-		
+
 		for (int i=0; i<die.getNumberOfDice(); i++){
 			total += (random.nextInt(die.getMaxValue())+1);
 		}
@@ -42,4 +42,18 @@ public class DiceHelper {
 		return total;
 	}
 
+	//Assumes properly populated customDie
+	public static String createDieDisplayText(Die customDie) {
+		String result="";
+		Integer modifier = customDie.getModifier();
+		Integer numberOfDice = customDie.getNumberOfDice();
+		Integer maxValue = customDie.getMaxValue();
+		result += numberOfDice+"d"+maxValue;
+		if (modifier != null && modifier > 0){
+			result += "+" + modifier;
+		} else if (modifier<0){
+			result += modifier;
+		}
+		return result;
+	}
 }
