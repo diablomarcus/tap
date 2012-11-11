@@ -22,7 +22,8 @@ package net.katerberg.tap.db;
 import java.util.ArrayList;
 import java.util.List;
 
-import beans.CustomDie;
+import net.katerberg.tap.beans.Die;
+
 
 
 import android.content.ContentValues;
@@ -71,7 +72,7 @@ public class DbHandler extends SQLiteOpenHelper{
 		this.onCreate(db);
 	}
 
-	public Long addCustomDie(CustomDie customDie){
+	public Long addCustomDie(Die customDie){
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues contentValues = createContentValuesFromCustomDie(customDie);
@@ -81,7 +82,7 @@ public class DbHandler extends SQLiteOpenHelper{
 		return insert;
 	}
 
-	public CustomDie getCustomDie(String id){
+	public Die getCustomDie(String id){
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		Cursor cursor = db.query(TABLE_CUSTOM_DICE, 
@@ -95,7 +96,7 @@ public class DbHandler extends SQLiteOpenHelper{
 			cursor.moveToFirst(); //ID is the primary key, it should only ever have one result here
 		}
 
-		CustomDie customDie = new CustomDie(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2),cursor.getInt(3));
+		Die customDie = new Die(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2),cursor.getInt(3));
 		db.close();
 		cursor.close();
 
@@ -104,8 +105,8 @@ public class DbHandler extends SQLiteOpenHelper{
 	}
 
 
-	public List<CustomDie> getAllCustomDice(){
-		List<CustomDie> customDiceList = new ArrayList<CustomDie>();
+	public List<Die> getAllCustomDice(){
+		List<Die> customDiceList = new ArrayList<Die>();
 
 		SQLiteDatabase db = this.getReadableDatabase();
 		String sql = "SELECT "+KEY_ID+","+NUMBER_OF_DICE+","+MAX_VALUE+","+MODIFIER+" FROM "+TABLE_CUSTOM_DICE;
@@ -113,7 +114,7 @@ public class DbHandler extends SQLiteOpenHelper{
 		cursor.moveToFirst();
 
 		for(int i=0; i<cursor.getCount(); i++){
-			customDiceList.add(new CustomDie(cursor.getInt(0), cursor.getInt(1),cursor.getInt(2),cursor.getInt(3)));
+			customDiceList.add(new Die(cursor.getInt(0), cursor.getInt(1),cursor.getInt(2),cursor.getInt(3)));
 			cursor.moveToNext();
 		}
 		cursor.close();
@@ -138,14 +139,14 @@ public class DbHandler extends SQLiteOpenHelper{
 		if (id==null){
 			return null;
 		}
-		CustomDie customDie = getCustomDie(id.toString());
+		Die customDie = getCustomDie(id.toString());
 		if (customDie == null){
 			return null;
 		}
 		return updateCustomDie(customDie);
 	}
 
-	public Integer updateCustomDie(CustomDie customDie){
+	public Integer updateCustomDie(Die customDie){
 
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = createContentValuesFromCustomDie(customDie);
@@ -158,7 +159,7 @@ public class DbHandler extends SQLiteOpenHelper{
 		return rowsChanged;
 	}
 
-	public void deleteInput(CustomDie input){
+	public void deleteInput(Die input){
 		deleteInput(input.getCustomDieId());
 	}
 
@@ -170,7 +171,7 @@ public class DbHandler extends SQLiteOpenHelper{
 		db.close();
 	}
 
-	private ContentValues createContentValuesFromCustomDie(CustomDie customDie) {
+	private ContentValues createContentValuesFromCustomDie(Die customDie) {
 		ContentValues contentValues = new ContentValues();
 		contentValues.put(NUMBER_OF_DICE, customDie.getNumberOfDice());
 		contentValues.put(MAX_VALUE, customDie.getMaxValue());

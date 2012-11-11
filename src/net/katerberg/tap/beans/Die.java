@@ -1,4 +1,4 @@
-package beans;
+package net.katerberg.tap.beans;
 /*******************************************************************************
  * Copyright (c) 2012 "Mark Katerberg"
  * 
@@ -18,7 +18,7 @@ package beans;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-public class CustomDie {
+public class Die {
 	private Integer customDieId;
 	private Integer numberOfDice;
 	private Integer maxValue;
@@ -26,10 +26,16 @@ public class CustomDie {
 	
 
 	
-	public CustomDie() {
+	public Die() {
 	}
 	
-	public CustomDie(Integer customDieId, Integer numberOfDice, Integer maxValue, Integer modifier) {
+	public Die(Integer numberOfDice, Integer maxValue, Integer modifier) {
+		this.numberOfDice = numberOfDice;
+		this.maxValue = maxValue;
+		this.modifier = modifier;
+	}
+	
+	public Die(Integer customDieId, Integer numberOfDice, Integer maxValue, Integer modifier) {
 		this.customDieId = customDieId;
 		this.numberOfDice = numberOfDice;
 		this.maxValue = maxValue;

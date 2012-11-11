@@ -5,7 +5,7 @@ package net.katerberg.tap.tabs;
  * 
  * This file is part of TAP.
  * 
- * Katerproject is free software: you can redistribute it and/or modify
+ * TAP is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
  * published by the Free Software Foundation, either version 3 of the
  * License, or (at your option) any later version.
@@ -18,12 +18,11 @@ package net.katerberg.tap.tabs;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-import java.util.Random;
-
 import net.katerberg.tap.R;
+import net.katerberg.tap.beans.Die;
+import net.katerberg.tap.helpers.DiceListener;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
@@ -39,6 +38,7 @@ public class DiceTab extends Activity {
 
 	private void createListeners() {
 		TextView diceDisplayView = (TextView)this.findViewById(R.id.diceDisplayView);
+		if (null == diceDisplayView) { return; }
 		
 		((Button)this.findViewById(R.id.d4)).setOnClickListener(createRollListener(4, diceDisplayView));
 		((Button)this.findViewById(R.id.d6)).setOnClickListener(createRollListener(6, diceDisplayView));
@@ -51,24 +51,7 @@ public class DiceTab extends Activity {
 	}
 
 	private OnClickListener createRollListener(final Integer dieSize, final TextView outputField) {
-		if (dieSize == null || outputField == null|| dieSize < 0){
-			return null;
-		}
 		
-		return createOnClickListener(outputField, dieSize);
-	}
-
-	private OnClickListener createOnClickListener(final TextView outputField, final Integer dieSize) {
-		if (outputField == null || dieSize==null) {
-			return null;
-		}
-		
-		return new OnClickListener() {
-	    	public void onClick(View v) {
-
-	    		Integer randomNumber = (Integer)(new Random().nextInt(dieSize)+1);
-	    		outputField.setText(randomNumber.toString());
-	    	}
-		};
+		return new DiceListener(new Die(1, dieSize, null), outputField);
 	}
 }

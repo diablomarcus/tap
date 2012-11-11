@@ -1,4 +1,4 @@
-package helpers;
+package net.katerberg.tap.helpers;
 /*******************************************************************************
  * Copyright (c) 2012 "Mark Katerberg"
  * 
@@ -18,22 +18,36 @@ package helpers;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-import beans.CustomDie;
+import net.katerberg.tap.beans.Die;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-public class CustomDiceHelper implements OnClickListener {
+public class DiceListener implements OnClickListener {
 
-	private CustomDie customDie;
+	private Die die;
+	private TextView outputView;
 
-	public CustomDiceHelper(CustomDie customDie){
-		this.customDie = customDie;
+	public DiceListener(Die die, TextView outputView){
+		this.die = die;
+		this.outputView = outputView;
 	}
 	
 	public void onClick(View v) {
+		if (!areInputsValid()){return;}
+
+		outputView.setText(DiceHelper.rollDie(die).toString());
 		
-		// TODO Auto-generated method stub
-		
+	}
+
+	private boolean areInputsValid() {
+		if (outputView == null || 
+				die == null ||
+				die.getMaxValue() == null ||
+				die.getNumberOfDice() == null){
+			return false;
+		}
+		return true;
 	}
 
 	

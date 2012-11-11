@@ -21,7 +21,8 @@ package net.katerberg.tap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import beans.CustomDie;
+import net.katerberg.tap.beans.Die;
+
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -47,7 +48,7 @@ public class AddNewDie extends Activity{
 			public void onClick(View v) {
 				
 				String userInput = edit.getText().toString().toLowerCase();
-				CustomDie userDie = null; 
+				Die userDie = null; 
 				if(isInputValid(userInput)){
 					userDie = userInputToCustomDie(userInput);
 				}
@@ -59,8 +60,8 @@ public class AddNewDie extends Activity{
 			}
 
 
-			private CustomDie userInputToCustomDie(String userInput) {
-				CustomDie die = new CustomDie();
+			private Die userInputToCustomDie(String userInput) {
+				Die die = new Die();
 				die.setModifier(0);
 				String[] dSeparator = userInput.split("d");
 				Integer numberOfDice=Integer.parseInt(dSeparator[0]);
