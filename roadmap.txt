@@ -21,9 +21,9 @@ Features:
 +Dice rolling
    -min/max support
    -longpress delete custom die
-+Monster Manual
 +Map Storage
-+Settings
++Settings (what should these dooooo?)
++Monster Manual
 +Plugins 
 +import plugin
    -monster
