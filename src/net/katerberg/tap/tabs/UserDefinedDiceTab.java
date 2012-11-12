@@ -20,9 +20,9 @@ package net.katerberg.tap.tabs;
  ******************************************************************************/
 
 import java.util.List;
-
 import net.katerberg.tap.AddNewDieActivity;
 import net.katerberg.tap.R;
+import net.katerberg.tap.TapApplication;
 import net.katerberg.tap.beans.Die;
 import net.katerberg.tap.db.DbHandler;
 import net.katerberg.tap.helpers.DiceHelper;
@@ -43,14 +43,16 @@ public class UserDefinedDiceTab extends Activity {
 	DbHandler dbHandler; 
 	LinearLayout customDice;
 	TextView displayView;
+	DiceHelper diceHelper;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_dice_tab);
-		dbHandler = new DbHandler(getApplicationContext());
+		dbHandler = new DbHandler(TapApplication.getAppContext());
 		customDice = (LinearLayout)findViewById(R.id.customDiceRollsLayout);
 		displayView = (TextView)findViewById(R.id.diceDisplayView);
+		diceHelper = new DiceHelper();
 		
 		populateCustomDiceList();
 	}
@@ -68,7 +70,7 @@ public class UserDefinedDiceTab extends Activity {
 		for (Die customDie : dbHandler.getAllCustomDice()){
 			Button button = new Button(this);
 			button.setOnClickListener(new DiceListener(customDie, displayView));
-			button.setText(DiceHelper.createDieDisplayText(customDie));
+			button.setText(diceHelper.createDieDisplayText(customDie));
 			customDice.addView(button);
 		}
 	}

@@ -21,13 +21,26 @@ package net.katerberg.tap.helpers;
 
 import java.util.Random;
 
+import net.katerberg.tap.R;
+import net.katerberg.tap.TapApplication;
 import net.katerberg.tap.beans.Die;
+import android.content.Context;
+import android.media.MediaPlayer;
 
 public class DiceHelper {
 	static Random random = new Random();
+	MediaPlayer mediaPlayer;
+
+	public DiceHelper() {
+		mediaPlayer = MediaPlayer.create(TapApplication.getAppContext(), R.raw.roll);
+		defineMediaPlayerListeners();
+	}
 
 	//Assumes all values except modifier are non-null
-	public static Integer rollDie(Die die){
+	public Integer rollDie(Die die, Context context){
+
+
+		mediaPlayer.start(); 
 		if (die==null){return null;}
 
 		Integer total=0;//Initialized
@@ -43,7 +56,7 @@ public class DiceHelper {
 	}
 
 	//Assumes properly populated customDie
-	public static String createDieDisplayText(Die customDie) {
+	public String createDieDisplayText(Die customDie) {
 		String result="";
 		Integer modifier = customDie.getModifier();
 		Integer numberOfDice = customDie.getNumberOfDice();
@@ -56,4 +69,13 @@ public class DiceHelper {
 		}
 		return result;
 	}
+
+	private void defineMediaPlayerListeners() {
+		SoundListeners soundListeners = new SoundListeners();
+		mediaPlayer.setOnPreparedListener(soundListeners.onPreparedListener);
+		mediaPlayer.setOnCompletionListener(soundListeners.onCompletionListener);
+		mediaPlayer.setOnVideoSizeChangedListener(soundListeners.onVideoSizeChangedListener);
+		mediaPlayer.setOnErrorListener(soundListeners.onErrorListener);
+	}
+
 }

@@ -27,16 +27,18 @@ public class DiceListener implements OnClickListener {
 
 	private Die die;
 	private TextView outputView;
+	private DiceHelper diceHelper;
 
 	public DiceListener(Die die, TextView outputView){
 		this.die = die;
 		this.outputView = outputView;
+		diceHelper = new DiceHelper();
 	}
 	
 	public void onClick(View v) {
 		if (!areInputsValid()){return;}
-
-		outputView.setText(DiceHelper.rollDie(die).toString());
+		
+		outputView.setText(diceHelper.rollDie(die, v.getContext()).toString());
 		
 	}
 
