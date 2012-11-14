@@ -19,6 +19,7 @@ package net.katerberg.tap.tabs;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
 import net.katerberg.tap.R;
+import net.katerberg.tap.TapApplication;
 import net.katerberg.tap.helpers.SettingsListeners;
 import android.app.Activity;
 import android.os.Bundle;
@@ -34,7 +35,8 @@ public class SettingsTab extends Activity {
 
 	private void setupSettingsListeners() {
 		SettingsListeners soundListeners = new SettingsListeners();
-		CheckBox soundBox = (CheckBox)this.findViewById(R.id.sound_value);
-		soundBox.setOnCheckedChangeListener(soundListeners.onCheckedChangeListener);
+		CheckBox soundToggle = (CheckBox)this.findViewById(R.id.sound_value);
+		soundToggle.setChecked(TapApplication.isSoundOn());
+		soundToggle.setOnCheckedChangeListener(soundListeners.onCheckedChangeListener);
 	}
 }

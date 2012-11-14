@@ -19,6 +19,8 @@ package net.katerberg.tap.tabs;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
 
+import java.util.List;
+
 import net.katerberg.tap.AddNewDieActivity;
 import net.katerberg.tap.R;
 import net.katerberg.tap.TapApplication;
@@ -57,7 +59,6 @@ public class CustomDiceTab extends Activity {
 		displayView.setText("");
 
 		populateCustomDiceList();
-		handleEmptyDisplay();
 	}
 
 
@@ -65,27 +66,6 @@ public class CustomDiceTab extends Activity {
 	public void onResume(){
 		super.onResume();
 		populateCustomDiceList();
-		handleEmptyDisplay();
-	}
-
-	private void populateCustomDiceList() {
-		customDice.removeAllViews();
-
-		for (Die customDie : dbHandler.getAllCustomDice()){
-			Button button = new Button(this);
-			button.setOnClickListener(new DiceListener(customDie, displayView));
-			button.setText(diceHelper.createDieDisplayText(customDie));
-			button.setTextSize(25);
-			LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-			button.setLayoutParams(layoutParams);
-			customDice.addView(button);
-		}
-	}
-
-	private void handleEmptyDisplay() {
-		if(dbHandler.getCustomDiceCount()==0){
-			customDice.addView(createCustomDieAddButton());
-		} 
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -108,6 +88,30 @@ public class CustomDiceTab extends Activity {
 		}
 	}
 	
+	private void populateCustomDiceList() {
+		customDice.removeAllViews();
+		
+		List<Die> allCustomDice = dbHandler.getAllCustomDice();
+		for (Die customDie : allCustomDice){
+			Button button = createCustomDieButton(customDie);
+			customDice.addView(button);
+		}
+		
+		if(allCustomDice.size()==0){
+			customDice.addView(createCustomDieAddButton());
+		} 
+	}
+	
+	private Button createCustomDieButton(Die customDie) {
+		Button button = new Button(this);
+		button.setOnClickListener(new DiceListener(customDie, displayView));
+		button.setText(diceHelper.createDieDisplayText(customDie));
+		button.setTextSize(25);
+		LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+		button.setLayoutParams(layoutParams);
+		return button;
+	}
+
 	private Button createCustomDieAddButton() {
 		Button addCustomDie = new Button(this);
 		addCustomDie.setText(R.string.add_custom_die);
