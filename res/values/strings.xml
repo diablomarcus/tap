@@ -35,5 +35,6 @@
     <string name="dPercent">D%</string>
     <string name="repeat">Repeat</string>
     <string name="custom_die_hint">e.g. 4d6+1</string>
+    <string name="sound_setting">Sound</string>
     
 </resources>

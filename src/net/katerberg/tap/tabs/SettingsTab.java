@@ -18,17 +18,23 @@ package net.katerberg.tap.tabs;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
+import net.katerberg.tap.R;
+import net.katerberg.tap.helpers.SoundListeners;
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.widget.CheckBox;
 
 public class SettingsTab extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
- 
-        TextView textView = new TextView(this);
-        textView.setText("Here are some settings. If you can't see them, then you're not special enough.");
-        setContentView(textView);
+        setContentView(R.layout.settings);        
+        setupSettingsListeners();
     }
+
+	private void setupSettingsListeners() {
+		SoundListeners soundListeners = new SoundListeners();
+		CheckBox soundBox = (CheckBox)this.findViewById(R.id.sound_value);
+		soundBox.setOnCheckedChangeListener(soundListeners.onCheckedChangeListener);
+	}
 }

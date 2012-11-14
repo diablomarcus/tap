@@ -39,8 +39,9 @@ public class DiceHelper {
 	//Assumes all values except modifier are non-null
 	public Integer rollDie(Die die, Context context){
 
-
-		mediaPlayer.start(); 
+		if (TapApplication.isSoundOn()){
+			mediaPlayer.start(); 
+		}
 		if (die==null){return null;}
 
 		Integer total=0;//Initialized
@@ -64,7 +65,7 @@ public class DiceHelper {
 		result += numberOfDice+"d"+maxValue;
 		if (modifier != null && modifier > 0){
 			result += "+" + modifier;
-		} else if (modifier<0){
+		} else if (modifier < 0){
 			result += modifier;
 		}
 		return result;
