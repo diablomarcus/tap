@@ -22,4 +22,7 @@
     <item
         android:id="@+id/add_new_die"
         android:title="Add Die"/>
+    <item
+        android:id="@+id/clear_all_dice"
+        android:title="Clear ALL Dice"/>
 </menu>

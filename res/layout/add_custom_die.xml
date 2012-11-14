@@ -33,6 +33,7 @@
     </EditText>
 
     <Button android:id="@+id/acceptCustomDie" 
+        android:text="@string/add_custom_die"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

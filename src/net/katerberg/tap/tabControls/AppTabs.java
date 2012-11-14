@@ -18,9 +18,9 @@ package net.katerberg.tap.tabControls;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
+import net.katerberg.tap.tabs.CustomDiceTab;
 import net.katerberg.tap.tabs.DiceTab;
 import net.katerberg.tap.tabs.SettingsTab;
-import net.katerberg.tap.tabs.UserDefinedDiceTab;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.TabHost;
@@ -44,7 +44,7 @@ public class AppTabs {
 		TabSpec secondTab = tabHost
 				.newTabSpec("Tab 2")
 				.setIndicator("Custom Dice")
-				.setContent(new Intent(context, UserDefinedDiceTab.class));
+				.setContent(new Intent(context, CustomDiceTab.class));
         
 		TabSpec thirdTab = tabHost
 				.newTabSpec("Tab 3")

@@ -19,7 +19,6 @@ package net.katerberg.tap.tabs;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
 
-import java.util.List;
 import net.katerberg.tap.AddNewDieActivity;
 import net.katerberg.tap.R;
 import net.katerberg.tap.TapApplication;
@@ -33,48 +32,62 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
-public class UserDefinedDiceTab extends Activity {
+public class CustomDiceTab extends Activity {
 
-	List<Die> customDiceList;
 	DbHandler dbHandler; 
 	LinearLayout customDice;
 	TextView displayView;
 	DiceHelper diceHelper;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.user_dice_tab);
+		setContentView(R.layout.custom_dice_tab);
 		dbHandler = new DbHandler(TapApplication.getAppContext());
 		customDice = (LinearLayout)findViewById(R.id.customDiceRollsLayout);
 		displayView = (TextView)findViewById(R.id.diceDisplayView);
 		diceHelper = new DiceHelper();
-		
+		displayView.setText("");
+
 		populateCustomDiceList();
+		handleEmptyDisplay();
 	}
+
 
 	@Override
 	public void onResume(){
 		super.onResume();
-		displayView.setText("");
 		populateCustomDiceList();
+		handleEmptyDisplay();
 	}
-	
+
 	private void populateCustomDiceList() {
 		customDice.removeAllViews();
-		
+
 		for (Die customDie : dbHandler.getAllCustomDice()){
 			Button button = new Button(this);
 			button.setOnClickListener(new DiceListener(customDie, displayView));
 			button.setText(diceHelper.createDieDisplayText(customDie));
+			button.setTextSize(25);
+			LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+			button.setLayoutParams(layoutParams);
 			customDice.addView(button);
 		}
 	}
-	
+
+	private void handleEmptyDisplay() {
+		if(dbHandler.getCustomDiceCount()==0){
+			customDice.addView(createCustomDieAddButton());
+		} 
+	}
+
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.user_defined_dice_menu, menu);
@@ -86,8 +99,26 @@ public class UserDefinedDiceTab extends Activity {
 		case R.id.add_new_die:
 			startActivity(new Intent(this, AddNewDieActivity.class));
 			return true;
+		case R.id.clear_all_dice:
+			dbHandler.deleteAllCustomDice();
+			onResume();
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+	
+	private Button createCustomDieAddButton() {
+		Button addCustomDie = new Button(this);
+		addCustomDie.setText(R.string.add_custom_die);
+		addCustomDie.setOnClickListener( new OnClickListener() {
+
+			public void onClick(View v) {
+				startActivity(new Intent(TapApplication.getAppContext(), AddNewDieActivity.class));
+
+			}
+		}
+				);
+		return addCustomDie;
 	}
 }

@@ -23,9 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.katerberg.tap.beans.Die;
-
-
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -177,6 +174,14 @@ public class DbHandler extends SQLiteOpenHelper{
 		contentValues.put(MAX_VALUE, customDie.getMaxValue());
 		contentValues.put(MODIFIER, customDie.getModifier());
 		return contentValues;
+	}
+
+	//This is pretty hacky for now. If this method needs to stick around,
+	// I can clean it up later -mak
+	public void deleteAllCustomDice() {
+
+		onUpgrade(this.getWritableDatabase(), DATABASE_VERSION, DATABASE_VERSION);
+
 	}
 }
 

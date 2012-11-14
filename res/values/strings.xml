@@ -36,5 +36,7 @@
     <string name="repeat">Repeat</string>
     <string name="custom_die_hint">e.g. 4d6+1</string>
     <string name="sound_setting">Sound</string>
+    <string name="no_dice_helper_text">Add dice via menu button</string>
+    <string name="add_custom_die">Add custom die</string>
     
 </resources>
