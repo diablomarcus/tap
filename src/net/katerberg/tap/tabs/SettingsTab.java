@@ -19,7 +19,7 @@ package net.katerberg.tap.tabs;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
 import net.katerberg.tap.R;
-import net.katerberg.tap.helpers.MediaListeners;
+import net.katerberg.tap.helpers.SettingsListeners;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.CheckBox;
@@ -33,7 +33,7 @@ public class SettingsTab extends Activity {
     }
 
 	private void setupSettingsListeners() {
-		MediaListeners soundListeners = new MediaListeners();
+		SettingsListeners soundListeners = new SettingsListeners();
 		CheckBox soundBox = (CheckBox)this.findViewById(R.id.sound_value);
 		soundBox.setOnCheckedChangeListener(soundListeners.onCheckedChangeListener);
 	}

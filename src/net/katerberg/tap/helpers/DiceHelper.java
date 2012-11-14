@@ -25,22 +25,25 @@ import net.katerberg.tap.R;
 import net.katerberg.tap.TapApplication;
 import net.katerberg.tap.beans.Die;
 import android.content.Context;
-import android.media.MediaPlayer;
+import android.media.AudioManager;
+import android.media.SoundPool;
 
 public class DiceHelper {
 	static Random random = new Random();
-	MediaPlayer mediaPlayer;
-
+	SoundPool soundPool;
+	Integer rollSound;
+	
+	
 	public DiceHelper() {
-		mediaPlayer = MediaPlayer.create(TapApplication.getAppContext(), R.raw.roll);
-		defineMediaPlayerListeners();
+		soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+		rollSound = soundPool.load(TapApplication.getAppContext(), R.raw.roll, 1);
 	}
 
 	//Assumes all values except modifier are non-null
 	public Integer rollDie(Die die, Context context){
 
 		if (TapApplication.isSoundOn()){
-			mediaPlayer.start(); 
+			soundPool.play(rollSound, 1, 1, 1, 0, 0);
 		}
 		if (die==null){return null;}
 
@@ -70,14 +73,4 @@ public class DiceHelper {
 		}
 		return result;
 	}
-
-	private void defineMediaPlayerListeners() {
-		MediaListeners mediaListeners = new MediaListeners();
-		mediaPlayer.setOnPreparedListener(mediaListeners.onPreparedListener);
-		mediaPlayer.setOnCompletionListener(mediaListeners.onCompletionListener);
-		mediaPlayer.setOnVideoSizeChangedListener(mediaListeners.onVideoSizeChangedListener);
-		mediaPlayer.setOnErrorListener(mediaListeners.onErrorListener);
-		mediaPlayer.setOnSeekCompleteListener(mediaListeners.onSeekCompleteListener);
-	}
-
 }

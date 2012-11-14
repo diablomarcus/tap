@@ -22,65 +22,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.katerberg.tap.TapApplication;
-
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.media.MediaPlayer.OnErrorListener;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import android.media.MediaPlayer.OnVideoSizeChangedListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
 
-public class MediaListeners {
+public class SettingsListeners {
 
 	protected  Logger _logger;
 
 
 
-	public MediaListeners() {
+	public SettingsListeners() {
 		_logger = Logger.getLogger("MediaListeners");
 	}
-
-	public OnErrorListener onErrorListener = new OnErrorListener() {
-
-		public boolean onError(MediaPlayer mp, int what, int extra) {
-			_logger.log(Level.FINE, "Media player issue. Probably user cancelling sound half though");
-			return false;
-		}
-	};
-
-
-	public OnCompletionListener onCompletionListener = new OnCompletionListener() {
-
-		public void onCompletion(MediaPlayer mp) {
-			//Don't do anything. This might change at some point, but I doubt it.
-		}
-	};
-
-	public OnPreparedListener onPreparedListener = new OnPreparedListener() {
-
-		public void onPrepared(MediaPlayer mp) {
-			//Don't do anything. This might change at some point, but I doubt it.
-		}
-	};
-	
-	public OnSeekCompleteListener onSeekCompleteListener = new OnSeekCompleteListener() {
-		
-		public void onSeekComplete(MediaPlayer mp) {
-			//Don't do anything. This might change at some point, but I doubt it.
-		}
-	};
-
-	public OnVideoSizeChangedListener onVideoSizeChangedListener = new OnVideoSizeChangedListener() {
-
-		public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
-			//Don't do anything. This might change at some point, but I doubt it.
-		}
-	};
-
-
 
 	public OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {
 
@@ -90,6 +44,7 @@ public class MediaListeners {
 			} else {
 				TapApplication.setSoundOn(false);
 			}
+			_logger.log(Level.CONFIG, "Sound setting changed", isChecked);
 		}
 	};
 }
