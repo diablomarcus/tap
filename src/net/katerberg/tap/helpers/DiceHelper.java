@@ -72,11 +72,12 @@ public class DiceHelper {
 	}
 
 	private void defineMediaPlayerListeners() {
-		SoundListeners soundListeners = new SoundListeners();
-		mediaPlayer.setOnPreparedListener(soundListeners.onPreparedListener);
-		mediaPlayer.setOnCompletionListener(soundListeners.onCompletionListener);
-		mediaPlayer.setOnVideoSizeChangedListener(soundListeners.onVideoSizeChangedListener);
-		mediaPlayer.setOnErrorListener(soundListeners.onErrorListener);
+		MediaListeners mediaListeners = new MediaListeners();
+		mediaPlayer.setOnPreparedListener(mediaListeners.onPreparedListener);
+		mediaPlayer.setOnCompletionListener(mediaListeners.onCompletionListener);
+		mediaPlayer.setOnVideoSizeChangedListener(mediaListeners.onVideoSizeChangedListener);
+		mediaPlayer.setOnErrorListener(mediaListeners.onErrorListener);
+		mediaPlayer.setOnSeekCompleteListener(mediaListeners.onSeekCompleteListener);
 	}
 
 }

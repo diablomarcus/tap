@@ -27,18 +27,19 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
 import android.media.MediaPlayer.OnPreparedListener;
+import android.media.MediaPlayer.OnSeekCompleteListener;
 import android.media.MediaPlayer.OnVideoSizeChangedListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
 
-public class SoundListeners {
+public class MediaListeners {
 
 	protected  Logger _logger;
 
 
 
-	public SoundListeners() {
+	public MediaListeners() {
 		_logger = Logger.getLogger("MediaListeners");
 	}
 
@@ -61,6 +62,13 @@ public class SoundListeners {
 	public OnPreparedListener onPreparedListener = new OnPreparedListener() {
 
 		public void onPrepared(MediaPlayer mp) {
+			//Don't do anything. This might change at some point, but I doubt it.
+		}
+	};
+	
+	public OnSeekCompleteListener onSeekCompleteListener = new OnSeekCompleteListener() {
+		
+		public void onSeekComplete(MediaPlayer mp) {
 			//Don't do anything. This might change at some point, but I doubt it.
 		}
 	};

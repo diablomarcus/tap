@@ -22,7 +22,6 @@ Features:
    -min/max support
    -longpress delete custom die
 +Map Storage
-+Settings (what should these dooooo?)
 +Monster Manual
 +Plugins 
 +import plugin
