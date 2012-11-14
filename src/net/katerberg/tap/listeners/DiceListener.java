@@ -1,4 +1,4 @@
-package net.katerberg.tap.helpers;
+package net.katerberg.tap.listeners;
 /*******************************************************************************
  * Copyright (c) 2012 "Mark Katerberg"
  * 
@@ -19,6 +19,7 @@ package net.katerberg.tap.helpers;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
 import net.katerberg.tap.beans.Die;
+import net.katerberg.tap.helpers.DiceHelper;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;

@@ -18,7 +18,7 @@ package net.katerberg.tap;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-import net.katerberg.tap.helpers.AcceptCustomDieListener;
+import net.katerberg.tap.listeners.AcceptCustomDieListener;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;

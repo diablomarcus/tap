@@ -26,7 +26,7 @@ import net.katerberg.tap.TapApplication;
 import net.katerberg.tap.beans.Die;
 import net.katerberg.tap.db.DbHandler;
 import net.katerberg.tap.helpers.DiceHelper;
-import net.katerberg.tap.helpers.DiceListener;
+import net.katerberg.tap.listeners.DiceListener;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

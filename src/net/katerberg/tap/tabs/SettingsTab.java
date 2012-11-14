@@ -20,7 +20,7 @@ package net.katerberg.tap.tabs;
  ******************************************************************************/
 import net.katerberg.tap.R;
 import net.katerberg.tap.TapApplication;
-import net.katerberg.tap.helpers.SettingsListeners;
+import net.katerberg.tap.listeners.SettingsListeners;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.CheckBox;

@@ -20,7 +20,7 @@ package net.katerberg.tap.tabs;
  ******************************************************************************/
 import net.katerberg.tap.R;
 import net.katerberg.tap.beans.Die;
-import net.katerberg.tap.helpers.DiceListener;
+import net.katerberg.tap.listeners.DiceListener;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View.OnClickListener;
