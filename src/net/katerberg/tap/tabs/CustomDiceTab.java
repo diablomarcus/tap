@@ -20,7 +20,6 @@ package net.katerberg.tap.tabs;
  ******************************************************************************/
 
 import java.util.List;
-
 import net.katerberg.tap.AddNewDieActivity;
 import net.katerberg.tap.R;
 import net.katerberg.tap.TapApplication;
@@ -119,7 +118,6 @@ public class CustomDiceTab extends Activity {
 
 			public void onClick(View v) {
 				startActivity(new Intent(TapApplication.getAppContext(), AddNewDieActivity.class));
-
 			}
 		}
 				);
