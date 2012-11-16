@@ -32,7 +32,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DbHandler extends SQLiteOpenHelper{
 	// All Static variables
 	// Database Version
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 
 	// Database Name
 	private static final String DATABASE_NAME = "customDiceManager";
@@ -42,6 +42,7 @@ public class DbHandler extends SQLiteOpenHelper{
 
 	// Contacts Table Columns names
 	private static final String KEY_ID = "customDieId";
+	private static final String NAME_OF_DIE = "nameOfDie";
 	private static final String NUMBER_OF_DICE = "numberOfDice";
 	private static final String MAX_VALUE = "maxValue";
 	private static final String MODIFIER = "modifier";
@@ -54,6 +55,7 @@ public class DbHandler extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		String CREATE_CUSTOM_DICE_TABLE = "CREATE TABLE " + TABLE_CUSTOM_DICE + "("
 				+ KEY_ID + " INTEGER PRIMARY KEY," 
+				+ NAME_OF_DIE + " TEXT," 
 				+ NUMBER_OF_DICE + " INTEGER," 
 				+ MAX_VALUE + " INTEGER," 
 				+ MODIFIER + " INTEGER" 
@@ -83,7 +85,7 @@ public class DbHandler extends SQLiteOpenHelper{
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		Cursor cursor = db.query(TABLE_CUSTOM_DICE, 
-				new String[]{KEY_ID, NUMBER_OF_DICE, MAX_VALUE, MODIFIER}, 
+				new String[]{KEY_ID, NAME_OF_DIE, NUMBER_OF_DICE, MAX_VALUE, MODIFIER}, 
 				KEY_ID+"=?", 
 				new String[]{id == null ? "" : id}, //Give value of id if it has a value
 				null, 
@@ -93,7 +95,7 @@ public class DbHandler extends SQLiteOpenHelper{
 			cursor.moveToFirst(); //ID is the primary key, it should only ever have one result here
 		}
 
-		Die customDie = new Die(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2),cursor.getInt(3));
+		Die customDie = new Die(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getInt(3),cursor.getInt(4));
 		db.close();
 		cursor.close();
 
@@ -106,12 +108,12 @@ public class DbHandler extends SQLiteOpenHelper{
 		List<Die> customDiceList = new ArrayList<Die>();
 
 		SQLiteDatabase db = this.getReadableDatabase();
-		String sql = "SELECT "+KEY_ID+","+NUMBER_OF_DICE+","+MAX_VALUE+","+MODIFIER+" FROM "+TABLE_CUSTOM_DICE;
+		String sql = "SELECT "+KEY_ID+","+NAME_OF_DIE+","+NUMBER_OF_DICE+","+MAX_VALUE+","+MODIFIER+" FROM "+TABLE_CUSTOM_DICE;
 		Cursor cursor = db.rawQuery(sql, null);
 		cursor.moveToFirst();
 
 		for(int i=0; i<cursor.getCount(); i++){
-			customDiceList.add(new Die(cursor.getInt(0), cursor.getInt(1),cursor.getInt(2),cursor.getInt(3)));
+			customDiceList.add(new Die(cursor.getInt(0), cursor.getString(1),cursor.getInt(2),cursor.getInt(3),cursor.getInt(4)));
 			cursor.moveToNext();
 		}
 		cursor.close();
@@ -170,6 +172,7 @@ public class DbHandler extends SQLiteOpenHelper{
 
 	private ContentValues createContentValuesFromCustomDie(Die customDie) {
 		ContentValues contentValues = new ContentValues();
+		contentValues.put(NAME_OF_DIE, customDie.getNameOfDie());
 		contentValues.put(NUMBER_OF_DICE, customDie.getNumberOfDice());
 		contentValues.put(MAX_VALUE, customDie.getMaxValue());
 		contentValues.put(MODIFIER, customDie.getModifier());

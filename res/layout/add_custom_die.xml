@@ -23,21 +23,73 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/customDieInput"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:hint="@string/custom_die_hint"
-        android:inputType="textNoSuggestions" >
-    </EditText>
+    <LinearLayout
+        android:paddingTop="15sp"
+        style="@style/DiceLayout"
+         >
 
-    <Button android:id="@+id/acceptCustomDie" 
-        android:text="@string/add_custom_die"
+        <TextView
+			style="@style/CustomDieLabel"
+            android:text="@string/name_of_roll" />
+
+        <EditText
+            android:id="@+id/customNameOfDie"
+            style="@style/CustomDieEdit" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+
+    
+    <LinearLayout
+        android:paddingTop="15sp"
+        style="@style/DiceLayout"
+         >
+
+        <TextView
+			style="@style/CustomDieLabel"
+            android:text="@string/number_of_dice" />
+
+        <EditText
+            android:id="@+id/customNumberOfDice"
+            style="@style/CustomDieEdit" >
+
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/DiceLayout" >
+
+        <TextView
+            style="@style/CustomDieLabel"
+            android:text="@string/custom_die_number_of_sides_label" />
+
+        <EditText
+            android:id="@+id/customDieType"
+            style="@style/CustomDieEdit" >
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+       style="@style/DiceLayout" >
+
+        <TextView
+            style="@style/CustomDieLabel"
+            android:text="@string/custom_die_modifier_label" />
+
+        <EditText
+            android:id="@+id/customModifier"
+            style="@style/CustomDieEdit"
+            android:hint="@string/example_modifier_text" >
+        </EditText>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/acceptCustomDie"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        >
+        android:text="@string/add_custom_die" >
     </Button>
 
 </LinearLayout>
