@@ -69,6 +69,13 @@ public class DbHandler extends SQLiteOpenHelper{
 		this.onCreate(db);
 	}
 
+	@Override
+	public void onDowngrade(android.database.sqlite.SQLiteDatabase db, int oldVersion, int newVersion){
+		onUpgrade(db, oldVersion, newVersion);
+	}
+
+	
+
 	public Long addCustomDie(Die customDie){
 		SQLiteDatabase db = this.getWritableDatabase();
 
