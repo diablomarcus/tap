@@ -95,7 +95,4 @@ public class Die {
 	public void setModifier(Integer modifier) {
 		this.modifier = modifier;
 	}
-	
-	
-
 }

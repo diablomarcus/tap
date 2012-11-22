@@ -20,6 +20,7 @@ package net.katerberg.tap.tabs;
  ******************************************************************************/
 
 import java.util.List;
+
 import net.katerberg.tap.AddNewDieActivity;
 import net.katerberg.tap.R;
 import net.katerberg.tap.TapApplication;
