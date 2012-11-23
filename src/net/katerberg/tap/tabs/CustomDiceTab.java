@@ -87,29 +87,42 @@ public class CustomDiceTab extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	
+
 	private void populateCustomDiceList() {
 		customDice.removeAllViews();
-		
+
 		List<Die> allCustomDice = dbHandler.getAllCustomDice();
 		for (Die customDie : allCustomDice){
 			Button button = createCustomDieButton(customDie);
 			customDice.addView(button);
 		}
-		
+
 		if(allCustomDice.size()==0){
 			customDice.addView(createCustomDieAddButton());
 		} 
 	}
-	
+
 	private Button createCustomDieButton(Die customDie) {
 		Button button = new Button(this);
 		button.setOnClickListener(new DiceListener(customDie, displayView));
-		button.setText(diceHelper.createDieDisplayText(customDie));
+		button.setText(getNameOfDie(customDie));
 		button.setTextSize(25);
 		LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		button.setLayoutParams(layoutParams);
 		return button;
+	}
+
+
+	private String getNameOfDie(Die customDie) {
+		
+		if (TapApplication.isCustomNameOn()){
+			String name = customDie.getNameOfDie();
+			if (null == name || "" == name || 0==name.length()) {
+				return diceHelper.createDieDisplayText(customDie);
+			}
+			return name;
+		}
+		return diceHelper.createDieDisplayText(customDie);
 	}
 
 	private Button createCustomDieAddButton() {

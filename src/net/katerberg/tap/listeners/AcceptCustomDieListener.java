@@ -25,14 +25,13 @@ public class AcceptCustomDieListener implements OnClickListener {
 
 	public void onClick(View v) {
 		Integer numberVal, sizeVal;
-		String nameText;
 		
+		String nameText = nameEdit.getText().toString();
 		Integer modifierVal = getModifierValue(modifierEdit.getText().toString());
 		if (null == modifierVal){
 			return;
 		}
 		try{
-			nameText = nameEdit.getText().toString();
 			sizeVal = Integer.parseInt(sizeEdit.getText().toString());
 			numberVal= Integer.parseInt(numberEdit.getText().toString());
 		} catch (NumberFormatException e){
@@ -53,8 +52,7 @@ public class AcceptCustomDieListener implements OnClickListener {
 		nameEdit.setText("");
 		numberEdit.setText("");
 		modifierEdit.setText("");
-		sizeEdit.setText("");
-		
+		sizeEdit.setText("");		
 	}
 
 	private Integer getModifierValue(String modifierString) {

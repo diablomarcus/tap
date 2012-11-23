@@ -40,10 +40,21 @@ public class TapApplication extends Application{
 	public static boolean isSoundOn(){
 		return mPrefs.getBoolean("sound", true);
 	}
-	
+
+	public static boolean isCustomNameOn(){
+		return mPrefs.getBoolean("customNames", true);
+	}
+
 	public static void setSoundOn(Boolean b){
 		if(null!=b){
 			mPrefs.edit().putBoolean("sound", b).commit();
 		}
 	}
+
+	public static void setCustomNameOn(Boolean b){
+		if(null!=b){
+			mPrefs.edit().putBoolean("customNames", b).commit();
+		}
+	}
+
 }
