@@ -20,9 +20,7 @@
 Features:
 +Dice rolling
    -min/max support
-   -longpress delete custom die
-   -Make custom die page look cleaner
-   -Make add custom die page be "options based"
+   -longpress edit/delete custom die
 +Map Storage
 +Monster Manual
 +Plugins 
