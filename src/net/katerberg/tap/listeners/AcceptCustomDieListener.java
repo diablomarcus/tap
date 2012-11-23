@@ -63,7 +63,7 @@ public class AcceptCustomDieListener implements OnClickListener {
 			try{
 				return Integer.parseInt(modifierString);
 			} catch (NumberFormatException e){
-				Toast toast = Toast.makeText(TapApplication.getAppContext(), modifierString, Toast.LENGTH_SHORT);
+				Toast toast = Toast.makeText(TapApplication.getAppContext(), "Invalid modifier input", Toast.LENGTH_SHORT);
 				toast.show();
 				return null;
 			}

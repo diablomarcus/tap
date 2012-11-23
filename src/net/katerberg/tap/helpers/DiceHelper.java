@@ -61,11 +61,10 @@ public class DiceHelper {
 
 	//Assumes properly populated customDie
 	public String createDieDisplayText(Die customDie) {
-		String result="";
 		Integer modifier = customDie.getModifier();
-		Integer numberOfDice = customDie.getNumberOfDice();
-		Integer maxValue = customDie.getMaxValue();
-		result += numberOfDice+"d"+maxValue;
+		
+		String result = customDie.getNumberOfDice() + "d" + customDie.getMaxValue();
+		
 		if (modifier != null && modifier > 0){
 			result += "+" + modifier;
 		} else if (modifier < 0){
