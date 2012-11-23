@@ -33,7 +33,8 @@
 
         <EditText
             android:id="@+id/customNameOfDie"
-            style="@style/CustomDieEdit" >
+            style="@style/CustomDieEdit"
+             >
 
             <requestFocus />
         </EditText>
@@ -50,6 +51,7 @@
 
         <EditText
             android:id="@+id/customNumberOfDice"
+            android:inputType="number"
             style="@style/CustomDieEdit" >
 
         </EditText>
@@ -64,6 +66,7 @@
 
         <EditText
             android:id="@+id/customDieType"
+            android:inputType="number"
             style="@style/CustomDieEdit" >
         </EditText>
     </LinearLayout>
@@ -78,6 +81,7 @@
         <EditText
             android:id="@+id/customModifier"
             style="@style/CustomDieEdit"
+            android:inputType="numberSigned"
             android:hint="@string/example_modifier_text" >
         </EditText>
     </LinearLayout>
