@@ -27,3 +27,10 @@ Features:
 +import plugin
    -monster
    -map
++Initiative tracker
++Spellbook
++Loot generator
++NPC Creator
++Free Culture Licenses Section
+   -OGL data section
+   -AGPL3 code section
