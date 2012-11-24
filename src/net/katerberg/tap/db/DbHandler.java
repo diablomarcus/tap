@@ -76,7 +76,7 @@ public class DbHandler extends SQLiteOpenHelper{
 		onUpgrade(db, oldVersion, newVersion);
 	}
 
-	
+
 
 	public Long addCustomDie(Die customDie){
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -115,7 +115,8 @@ public class DbHandler extends SQLiteOpenHelper{
 		List<Die> customDiceList = new ArrayList<Die>();
 
 		SQLiteDatabase db = this.getReadableDatabase();
-		String sql = "SELECT "+KEY_ID+","+NAME_OF_DIE+","+NUMBER_OF_DICE+","+MAX_VALUE+","+MODIFIER+" FROM "+TABLE_CUSTOM_DICE;
+		String sql = "SELECT " + KEY_ID + "," + NAME_OF_DIE + "," + NUMBER_OF_DICE + "," + MAX_VALUE + "," + MODIFIER 
+				+ " FROM " + TABLE_CUSTOM_DICE;
 		Cursor cursor = db.rawQuery(sql, null);
 		cursor.moveToFirst();
 
@@ -129,7 +130,8 @@ public class DbHandler extends SQLiteOpenHelper{
 	}
 
 	public Integer getCustomDiceCount(){
-		String countQuery = "SELECT " + KEY_ID + " FROM " + TABLE_CUSTOM_DICE;
+		String countQuery = "SELECT " + KEY_ID 
+				+ " FROM " + TABLE_CUSTOM_DICE;
 		SQLiteDatabase db = this.getReadableDatabase();
 
 		Cursor cursor = db.rawQuery(countQuery, null);
@@ -186,12 +188,8 @@ public class DbHandler extends SQLiteOpenHelper{
 		return contentValues;
 	}
 
-	//This is pretty hacky for now. If this method needs to stick around,
-	// I can clean it up later -mak
 	public void deleteAllCustomDice() {
-
-		onUpgrade(this.getWritableDatabase(), DATABASE_VERSION, DATABASE_VERSION);
-
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.delete(TABLE_CUSTOM_DICE, null, null);
 	}
 }
-
