@@ -32,15 +32,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DbHandler extends SQLiteOpenHelper{
 	// All Static variables
 	// Database Version
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 1;
 
 	// Database Name
-	private static final String DATABASE_NAME = "customDiceManager";
+	private static final String DATABASE_NAME = "tapDb";
 
-	// Contacts table name
+	// Custom Dice
 	private static final String TABLE_CUSTOM_DICE = "customDice";
 
-	// Contacts Table Columns names
+	// Custom Dice Column names
 	private static final String KEY_ID = "customDieId";
 	private static final String NAME_OF_DIE = "nameOfDie";
 	private static final String NUMBER_OF_DICE = "numberOfDice";
@@ -73,10 +73,17 @@ public class DbHandler extends SQLiteOpenHelper{
 
 	@Override
 	public void onDowngrade(android.database.sqlite.SQLiteDatabase db, int oldVersion, int newVersion){
-		onUpgrade(db, oldVersion, newVersion);
+		this.onUpgrade(db, oldVersion, newVersion);
 	}
 
-
+	@Override
+	public void onOpen(SQLiteDatabase db) {
+		super.onOpen(db);
+		if (!db.isReadOnly()) {
+			// Enable foreign key constraints
+			db.execSQL("PRAGMA foreign_keys=ON;");
+		}
+	}
 
 	public Long addCustomDie(Die customDie){
 		SQLiteDatabase db = this.getWritableDatabase();
