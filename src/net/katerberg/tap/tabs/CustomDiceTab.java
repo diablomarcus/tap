@@ -25,7 +25,7 @@ import net.katerberg.tap.AddNewDieActivity;
 import net.katerberg.tap.R;
 import net.katerberg.tap.TapApplication;
 import net.katerberg.tap.beans.Die;
-import net.katerberg.tap.db.DbHandler;
+import net.katerberg.tap.db.CustomDiceDbHandler;
 import net.katerberg.tap.helpers.DiceHelper;
 import net.katerberg.tap.listeners.DiceListener;
 import android.app.Activity;
@@ -43,7 +43,7 @@ import android.widget.TextView;
 
 public class CustomDiceTab extends Activity {
 
-	DbHandler dbHandler; 
+	CustomDiceDbHandler dbHandler; 
 	LinearLayout customDice;
 	TextView displayView;
 	DiceHelper diceHelper;
@@ -52,7 +52,7 @@ public class CustomDiceTab extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.custom_dice_tab);
-		dbHandler = new DbHandler(TapApplication.getAppContext());
+		dbHandler = new CustomDiceDbHandler(TapApplication.getAppContext());
 		customDice = (LinearLayout)findViewById(R.id.customDiceRollsLayout);
 		displayView = (TextView)findViewById(R.id.diceDisplayView);
 		diceHelper = new DiceHelper();

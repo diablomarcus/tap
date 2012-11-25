@@ -2,21 +2,21 @@ package net.katerberg.tap.listeners;
 
 import net.katerberg.tap.TapApplication;
 import net.katerberg.tap.beans.Die;
-import net.katerberg.tap.db.DbHandler;
+import net.katerberg.tap.db.CustomDiceDbHandler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class AcceptCustomDieListener implements OnClickListener {
-	DbHandler dbHandler;
+	CustomDiceDbHandler diceHandler;
 	EditText nameEdit;
 	EditText sizeEdit;
 	EditText numberEdit;
 	EditText modifierEdit;
 
 	public AcceptCustomDieListener(EditText nameField, EditText typeField, EditText numberField, EditText modifierField) {
-		dbHandler = new DbHandler(TapApplication.getAppContext());
+		diceHandler = new CustomDiceDbHandler(TapApplication.getAppContext());
 		nameEdit = nameField;
 		sizeEdit=typeField;
 		numberEdit=numberField;
@@ -41,7 +41,7 @@ public class AcceptCustomDieListener implements OnClickListener {
 		}
 		Die userDie = new Die(nameText, numberVal, sizeVal, modifierVal);
 		if(userDie != null){
-			dbHandler.addCustomDie(userDie);
+			diceHandler.addCustomDie(userDie);
 			Toast toast = Toast.makeText(TapApplication.getAppContext(), "Roll Added", Toast.LENGTH_SHORT);
 			toast.show(	);
 			clearInputs();
