@@ -32,8 +32,8 @@ public class DiceHelper {
 	static Random random = new Random();
 	SoundPool soundPool;
 	Integer rollSound;
-	
-	
+
+
 	public DiceHelper() {
 		soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
 		rollSound = soundPool.load(TapApplication.getAppContext(), R.raw.roll, 1);
@@ -50,21 +50,25 @@ public class DiceHelper {
 		Integer total=0;//Initialized
 		Integer modifier = die.getModifier();
 
-		for (int i=0; i<die.getNumberOfDice(); i++){
+		for (int i = 0; i < die.getNumberOfDice(); i++){
 			total += (random.nextInt(die.getMaxValue())+1);
 		}
-		if (modifier!=null){
-			total+=modifier;
+		if (modifier != null){
+			total += modifier;
 		}
-		return total;
+		if (total > 0){
+			return total;
+		} else {
+			return 1;
+		}
 	}
 
 	//Assumes properly populated customDie
 	public String createDieDisplayText(Die customDie) {
 		Integer modifier = customDie.getModifier();
-		
+
 		String result = customDie.getNumberOfDice() + "d" + customDie.getMaxValue();
-		
+
 		if (modifier != null && modifier > 0){
 			result += "+" + modifier;
 		} else if (modifier < 0){
