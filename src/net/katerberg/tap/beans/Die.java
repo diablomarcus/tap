@@ -1,6 +1,4 @@
 package net.katerberg.tap.beans;
-
-
 /*******************************************************************************
  * Copyright (c) 2012 "Mark Katerberg"
  * 
