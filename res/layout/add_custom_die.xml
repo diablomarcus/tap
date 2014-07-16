@@ -24,6 +24,7 @@
     android:orientation="vertical" >
 
     <LinearLayout
+        android:id="@+id/customNameOfDieLayout"
         style="@style/CustomDiceLayout"
          >
 

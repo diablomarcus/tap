@@ -21,6 +21,7 @@ package net.katerberg.tap;
 import net.katerberg.tap.listeners.AcceptCustomDieListener;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -30,7 +31,10 @@ public class AddNewDieActivity extends Activity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_custom_die);
-	
+		if(!TapApplication.isCustomNameOn()) {
+			findViewById(R.id.customNameOfDieLayout).setVisibility(View.GONE);
+		}
+		
 		EditText nameField = (EditText)findViewById(R.id.customNameOfDie);
 		EditText typeField = (EditText)findViewById(R.id.customDieType);
 		EditText numberField = (EditText)findViewById(R.id.customNumberOfDice);
