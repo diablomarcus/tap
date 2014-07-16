@@ -35,7 +35,8 @@ public class AddNewDieActivity extends Activity{
 		EditText typeField = (EditText)findViewById(R.id.customDieType);
 		EditText numberField = (EditText)findViewById(R.id.customNumberOfDice);
 		EditText modifierField = (EditText)findViewById(R.id.customModifier);
-		((Button)this.findViewById(R.id.acceptCustomDie)).setOnClickListener(new AcceptCustomDieListener(nameField, typeField, numberField, modifierField));
+		((Button)this.findViewById(R.id.acceptCustomDie))
+			.setOnClickListener(new AcceptCustomDieListener(this, nameField, typeField, numberField, modifierField));
 	}
 
 }

@@ -133,8 +133,7 @@ public class CustomDiceTab extends Activity {
 			public void onClick(View v) {
 				startActivity(new Intent(TapApplication.getAppContext(), AddNewDieActivity.class));
 			}
-		}
-				);
+		});
 		return addCustomDie;
 	}
 }

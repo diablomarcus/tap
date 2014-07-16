@@ -51,7 +51,6 @@ public class DiceTab extends Activity {
 	}
 
 	private OnClickListener createRollListener(final Integer dieSize, final TextView outputField) {
-		
 		return new DiceListener(new Die(1, dieSize, null), outputField);
 	}
 }

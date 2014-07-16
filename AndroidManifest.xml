@@ -25,7 +25,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="4"
+        android:minSdkVersion="8"
         android:targetSdkVersion="8" />
 
     <supports-screens
@@ -53,7 +53,8 @@
         </activity>
         <activity android:name=".tabs.SettingsTab" >
         </activity>
-        <activity android:name=".AddNewDieActivity" >
+        <activity android:name=".AddNewDieActivity" 
+            android:windowSoftInputMode="adjustResize" >
         </activity>
     </application>
 
