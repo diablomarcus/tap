@@ -31,8 +31,7 @@
     <string name="d8">D8</string>
     <string name="d10">D10</string>
     <string name="d20">D20</string>
-    <string name="d100">d100</string>
-    <string name="dPercent">D%</string>
+    <string name="dPercent">D100</string>
     <string name="repeat">Repeat</string>
     <string name="custom_die_hint">e.g. 4d6+1</string>
     <string name="sound_setting">Sound</string>
