@@ -1,6 +1,4 @@
 package net.katerberg.tap.beans;
-
-
 /*******************************************************************************
  * Copyright (c) 2012 "Mark Katerberg"
  * 
@@ -22,6 +20,7 @@ package net.katerberg.tap.beans;
  ******************************************************************************/
 public class Die {
 	private Integer customDieId;
+	private String nameOfDie;
 	private Integer numberOfDice;
 	private Integer maxValue;
 	private Integer modifier;
@@ -37,8 +36,16 @@ public class Die {
 		this.modifier = modifier;
 	}
 	
-	public Die(Integer customDieId, Integer numberOfDice, Integer maxValue, Integer modifier) {
+	public Die(String nameOfDie, Integer numberOfDice, Integer maxValue, Integer modifier) {
+		this.nameOfDie = nameOfDie;
+		this.numberOfDice = numberOfDice;
+		this.maxValue = maxValue;
+		this.modifier = modifier;
+	}
+	
+	public Die(Integer customDieId, String nameOfDie, Integer numberOfDice, Integer maxValue, Integer modifier) {
 		this.customDieId = customDieId;
+		this.nameOfDie = nameOfDie;
 		this.numberOfDice = numberOfDice;
 		this.maxValue = maxValue;
 		this.modifier = modifier;
@@ -52,6 +59,15 @@ public class Die {
 
 	public void setCustomDieId(Integer customDieId) {
 		this.customDieId = customDieId;
+	}
+	
+
+	public String getNameOfDie() {
+		return nameOfDie;
+	}
+
+	public void setNameOfDie(String nameOfDie) {
+		this.nameOfDie = nameOfDie;
 	}
 
 	public Integer getNumberOfDice() {
@@ -77,7 +93,4 @@ public class Die {
 	public void setModifier(Integer modifier) {
 		this.modifier = modifier;
 	}
-	
-	
-
 }

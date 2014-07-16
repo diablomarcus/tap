@@ -33,10 +33,10 @@ public class SettingsListeners {
 
 
 	public SettingsListeners() {
-		_logger = Logger.getLogger("MediaListeners");
+		_logger = Logger.getLogger("SettingsListeners");
 	}
 
-	public OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {
+	public OnCheckedChangeListener onSoundChangeListener = new OnCheckedChangeListener() {
 
 		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 			if (isChecked){
@@ -45,6 +45,17 @@ public class SettingsListeners {
 				TapApplication.setSoundOn(false);
 			}
 			_logger.log(Level.CONFIG, "Sound setting changed", isChecked);
+		}
+	};
+	public OnCheckedChangeListener onCustomNameChangeListener = new OnCheckedChangeListener() {
+
+		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+			if (isChecked){
+				TapApplication.setCustomNameOn(true);
+			} else {
+				TapApplication.setCustomNameOn(false);
+			}
+			_logger.log(Level.CONFIG, "Custom Name setting changed", isChecked);
 		}
 	};
 }

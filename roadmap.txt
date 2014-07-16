@@ -20,12 +20,17 @@
 Features:
 +Dice rolling
    -min/max support
-   -longpress delete custom die
-   -Make custom die page look cleaner
-   -Make add custom die page be "options based"
+   -longpress edit/delete custom die
 +Map Storage
 +Monster Manual
 +Plugins 
 +import plugin
    -monster
    -map
++Initiative tracker
++Spellbook
++Loot generator
++NPC Creator
++Free Culture Licenses Section
+   -OGL data section
+   -AGPL3 code section

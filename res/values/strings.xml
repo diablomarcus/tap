@@ -36,7 +36,13 @@
     <string name="repeat">Repeat</string>
     <string name="custom_die_hint">e.g. 4d6+1</string>
     <string name="sound_setting">Sound</string>
+    <string name="custon_name_setting">Allow Custom Names</string>
     <string name="no_dice_helper_text">Add dice via menu button</string>
     <string name="add_custom_die">Add custom die</string>
+    <string name="number_of_dice">Number of Dice</string>
+    <string name="example_modifier_text">e.g. 4 or -6</string>
+    <string name="custom_die_modifier_label">Amount to Add</string>
+    <string name="custom_die_number_of_sides_label">Number of Sides</string>
+    <string name="name_of_roll">Name of this Roll</string>
     
 </resources>

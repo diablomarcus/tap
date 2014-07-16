@@ -36,7 +36,11 @@ public class SettingsTab extends Activity {
 	private void setupSettingsListeners() {
 		SettingsListeners soundListeners = new SettingsListeners();
 		CheckBox soundToggle = (CheckBox)this.findViewById(R.id.sound_value);
+		CheckBox customNamesToggle = (CheckBox)this.findViewById(R.id.custom_name_value);
 		soundToggle.setChecked(TapApplication.isSoundOn());
-		soundToggle.setOnCheckedChangeListener(soundListeners.onCheckedChangeListener);
+		soundToggle.setOnCheckedChangeListener(soundListeners.onSoundChangeListener);
+		customNamesToggle.setChecked(TapApplication.isCustomNameOn());
+		customNamesToggle.setOnCheckedChangeListener(soundListeners.onCustomNameChangeListener);
+		
 	}
 }
