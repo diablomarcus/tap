@@ -97,9 +97,7 @@ public class CustomDiceTab extends Activity {
 			customDice.addView(button);
 		}
 
-		if(allCustomDice.size()==0){
-			customDice.addView(createCustomDieAddButton());
-		} 
+		customDice.addView(createCustomDieAddButton());
 	}
 
 	private Button createCustomDieButton(Die customDie) {
